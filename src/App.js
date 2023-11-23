@@ -1,8 +1,31 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Login from './components/login.components';
+import { useState } from 'react';
+import axios from 'axios'
+import React from 'react';
+const baseURL = "https://api.chucknorris.io/jokes/random"
+
 
 function App() {
+  const [data, setData] = useState({data: []});
+
+  const handleClick = async () => {
+    setIsLoading(true);
+      const response = await fetch(baseURL, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+
+      const result = await response.json();
+
+      setData(result);
+  };
+
+  console.log(data);
+  
   return (
     <div className='App'>
       <div className='auth-wrapper'>
@@ -38,9 +61,10 @@ function App() {
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary"onClick={handleClick}>
             Glory to Ohio
           </button>
+          <h3 className='joke'>{data.value}</h3>
         </div>
         <p className="forgot-password text-right">
           Forgot <a href="https://www.youtube.com/watch?v=Zt-Ql9ZE2XI">password?</a>
@@ -50,6 +74,9 @@ function App() {
       </div>
     </div>
   );
+}
+function Login(){
+
 }
 
 export default App;
