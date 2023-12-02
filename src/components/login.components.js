@@ -1,12 +1,10 @@
 import React from "react";
 import { useState } from 'react';
 import axios from 'axios'
-export default function Login(){
-    const [data, setData] = useState({data: []});
-    const x = 12;
+import PropTypes from 'prop-types'
+export default function Login({ setToken }){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [token, setToken] = useState('')
     
   
   
@@ -78,4 +76,7 @@ export default function Login(){
     
         </div>
       );
+      Login.propTypes = {
+        setToken: PropTypes.func.isRequired
+      }
 }
