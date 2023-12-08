@@ -6,8 +6,6 @@ export default function Login({ setToken }){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
-  
-  
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
     };
