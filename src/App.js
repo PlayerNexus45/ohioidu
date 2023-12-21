@@ -32,8 +32,10 @@ function App() {
   const [counter, setCounter] = useState(0)
   const [msg, setmsg] = useState(1)
   const [page, setpage] = useState(1)
+  var dis = false
   function handleClick1() {
     setCounter(1)
+    setmsg(0)
   }
   function handleClick0() {
     setCounter(0)
@@ -57,6 +59,9 @@ function App() {
     }
     
   }
+  function onLogOut(){
+
+  }
   if(!token){
     return <Login setToken={setToken}/>
   }
@@ -65,20 +70,13 @@ function App() {
   
   return(
     <div className='IDU'>
-      <div className='parent-container d-flex'>
-        <div className='container'>
-          <div className='row'>
-          <button className='col' onClick={handleClick0}>Profile</button>
-          </div>
-        </div>
-        <div className='container'>
-          <div className='row'>
-          <button className='col' onClick={handleClick1}>Messages</button>
-          </div>
-        </div>
-      </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" onClick={handleClick0}>Profile</button>
+    <button type="button" class="btn btn-secondary" onClick={handleClick1}>Messages</button>
+    <button type="button" class="btn btn-secondary">Log Out</button>
+    </div>
 
-      <div className='profile'>
+      <div className='msg'>
         <h2 id='profile'>Loading...</h2>
       </div>
 
@@ -89,32 +87,25 @@ else if(counter == 1){
   Messages(token, msg, page)
   return(
   <div className='IDU2'>
+  <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary" onClick={handleClick0}>Profile</button>
+  <button type="button" class="btn btn-secondary" onClick={handleClick1}>Messages</button>
+  <button type="button" class="btn btn-secondary">Log Out</button>
+  </div>
+  <br/>
+    <div className='msg'>
+      <div id='profile'className='messages'>Loading...</div>
+  </div>
+  <br/>
   <div className='parent-container d-flex'>
     <div className='container'>
       <div className='row'>
-      <button className='col' onClick={handleClick0}>Profile</button>
+      <button className='col btn btn-primary ' type='button' onClick={handleClickdown} >Previous</button>
       </div>
     </div>
     <div className='container'>
       <div className='row'>
-      <button className='col' onClick={handleClick1}>Messages</button>
-      </div>
-    </div>
-  </div>
-  
-  <div className='d-inline-flex p-2' id='centre'>
-      <h2 id='profile'className='messages'>Loading...</h2>
-  </div>
-
-  <div className='parent-container d-flex'>
-    <div className='container'>
-      <div className='row'>
-      <button className='col' onClick={handleClickdown}>Previous</button>
-      </div>
-    </div>
-    <div className='container'>
-      <div className='row'>
-      <button className='col' onClick={handleClickup}>Next</button>
+      <button className='col btn btn-primary' onClick={handleClickup}>Next</button>
       </div>
     </div>
   </div>
